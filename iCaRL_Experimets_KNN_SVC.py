@@ -283,9 +283,9 @@ class iCarlNet(nn.Module):
       # weight = 'distance'
       # p = [1 (Manhattan distance), 2 (Euclidean distance)]  
 
-      """classifier = KNeighborsClassifier(n_neighbors = 8, weights = 'distance')"""
+      """classifier = KNeighborsClassifier(n_neighbors = self.K_neighbors, weights = 'distance')"""
       #classifier = KNeighborsClassifier(n_neighbors=self.K_neighbors, weights = 'distance')
-      #classifier = KNeighborsClassifier(n_neighbors = 8, weight = 'distance', p=1)
+      #classifier = KNeighborsClassifier(n_neighbors = self.K_neighbors, weight = 'distance', p=1)
       
 
       #When using SVC as Classifier
