@@ -352,6 +352,10 @@ def truncate_colormap(cmap, minval=0.0, maxval=1.0, n=100):
         cmap(np.linspace(minval, maxval, n)))
     return new_cmap
 
+
+
+---------------------------------------------------------------------------------------
+
 # Importing Datasets and defining the transformations
 train_transform=transforms.Compose([
             transforms.RandomCrop(32, padding = 4),
@@ -369,6 +373,8 @@ trainset = torchvision.datasets.CIFAR100(root='./data', train=True,
 testset = torchvision.datasets.CIFAR100(root='./data', train=False,
                                        download=True, transform=test_transform)
 DEVICE = 'cuda'
+
+
 
 #mini batches will be the base of construction of exemplars
 mini_batches = []
@@ -395,7 +401,8 @@ for i in range(10,110,10):
 train_dataloaders = [DataLoader(batch, batch_size=128, shuffle=False, num_workers=4, drop_last = True) for batch in batches_train]
 test_dataloaders = [DataLoader(batch, batch_size=128, shuffle=True, num_workers=4, drop_last = True) for batch in batches_test]
 
-"""**Initialization of iCarl...**"""
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 #Inizialization of iCarl on the first set of ten classes
 icarl = iCarlNet(10, d)
@@ -408,10 +415,11 @@ for y in range(10):
 print('done')
 test_accuracy = icarl.test_classify(test_dataloaders[0])
 
-"""**Train iCarl over all the other classes...**"""
 
 #initialize the accuracy list with the first test accuracy
 Accuracy = [test_accuracy] 
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 # Training iCaRL all over the classes 
 for i,idx in enumerate(range(10,100,10)):
