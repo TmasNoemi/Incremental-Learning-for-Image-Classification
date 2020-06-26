@@ -61,7 +61,7 @@ class iCarlNet(nn.Module):
         self.criterion_KLDiv = nn.KLDivLoss()           # distillation loss
         self.criterion_MSE = nn.MSELoss()               # calssification and distillation loss
         self.criterion_CE = nn.CrossEntropyLoss()       # classification loss 
-        self.num_epochs = 2
+        self.num_epochs = 70
         
         self.ex_features = []
         self.ex_labels = []
