@@ -413,6 +413,8 @@ class iCarlNet(nn.Module):
         print(f'Test Accuracy: {accuracy:.4f}')
         return accuracy
 
+ #------------------------------------------------------------------------------------------------------------------------------------------------   
+    
 def print_confusion_matrix(confusion_matrix, class_names, figsize = (6,4), fontsize=5):
 
     df_cm = pd.DataFrame(
@@ -438,6 +440,9 @@ def truncate_colormap(cmap, minval=0.0, maxval=1.0, n=100):
         'trunc({n},{a:.2f},{b:.2f})'.format(n=cmap.name, a=minval, b=maxval),
         cmap(np.linspace(minval, maxval, n)))
     return new_cmap
+
+ #------------------------------------------------------------------------------------------------------------------------------------------------   
+    
 
 #Define datasets
 train_transform=transforms.Compose([
@@ -484,7 +489,10 @@ for i in range(10,110,10):
 train_dataloaders = [DataLoader(batch, batch_size=128, shuffle=False, num_workers=4, drop_last = True) for batch in batches_train]
 test_dataloaders = [DataLoader(batch, batch_size=128, shuffle=True, num_workers=4, drop_last = True) for batch in batches_test]
 
-"""**Initialization of iCarl...**"""
+
+#------------------------------------------------------------------------------------------------------------------------------------------------   
+    
+# Initialization of iCarl    
 
 icarl = iCarlNet(10,d)
 icarl.train_initialize(train_dataloaders[0])
@@ -497,7 +505,9 @@ for y in range(10):
 print(f'done now there are {len(icarl.exemplars)} exemplars')
 test_accuracy = icarl.Classify(test_dataloaders[0])
 
-"""**Train iCarl over all the other classes...**"""
+
+#------------------------------------------------------------------------------------------------------------------------------------------------   
+#Train iCarl over all the other classes
 
 Accuracy = [test_accuracy] 
 #initialize the accuracy list with the first test accuracy
